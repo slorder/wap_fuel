@@ -1,0 +1,98 @@
+$green: #DD371F;
+$f: #fff;
+$border: #ddd;
+$gray: #333;
+$grey: #666;
+$gre: rgba(16, 16, 16, 1);
+//蓝色
+$blue: $green;
+//红色
+$red: rgba(248, 0, 0, 1);
+$pink: rgba(255, 224, 224, 1);
+$mini: 0.667rem;
+$min: 0.8rem;
+$med: 0.94rem;
+$max: 1.1rem;
+//标题字体
+$title: 1rem;
+//顶部
+$top: 40rem/15;
+$bottom: 3.5rem;
+
+// 背景图片地址和大小
+@mixin bg($url) {
+  background-image: url($url + "@2x.png");
+  //判断高像素屏幕采用更清晰的图片
+  @media (-webkit-min-device-pixel-ratio:3),(min-device-pixel-ratio:3){
+    background-image: url($url + "@3x.png")
+  }
+  background-repeat: no-repeat;
+}
+
+@mixin borderRadius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin el($row) {
+  display: -webkit-box; //将对象作为弹性伸缩盒子模型显示。
+  word-break: break-all;
+  word-wrap: break-word;
+  -webkit-box-orient: vertical; //从上到下垂直排列子元素（设置伸缩盒子的子元素排列方式）
+  -webkit-line-clamp: $row; //这个属性不是css的规范属性，需要组合上面两个属性，表示显示的行数。
+}
+
+//定位全屏
+@mixin allcover {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+//定位上下左右居中
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+//定位上下居中
+@mixin mid {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+//定位左右居中
+@mixin cen {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+//宽高
+@mixin wh($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+//字体大小、行高、字体
+@mixin sh($size, $line-height, $family: 'Microsoft YaHei') {
+  font: #{$size}/#{$line-height} $family;
+}
+
+//字体大小，颜色
+@mixin sc($size, $color) {
+  font-size: $size;
+  color: $color;
+}
+
+//flex 布局和 子元素 对其方式
+@mixin flex($type: space-between) {
+  display: flex;
+  justify-content: $type;
+}
